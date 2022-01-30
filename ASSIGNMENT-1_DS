@@ -1,0 +1,43 @@
+
+# Assignment-1
+
+#  Importing the CSV and Random Libraries to read the tsv file and shuffle the list respectively
+
+import csv
+import random
+
+
+#  Reading the File and moving the pointer from header to first student.
+
+
+file = open("sp-22-students.tsv")
+studata = csv.reader(file, delimiter='\t')
+temp=next(studata)
+
+
+#  Reading the data into a list named as students_list and shuffling it by using random library.
+
+
+students_list=[]
+for x in studata:
+    students_list.append(x)
+random.shuffle(students_list)
+
+
+#  Taking the input for number of groups to be formed from user in integers.
+# Then a for loop is runned n  times, where n = desired number of groups.
+# A nested for loop will get the values(p) starting with the group number to the total number of students in the class with an equal intravels of n. 
+#The pth value from students list is appended to new list created for each team.
+# ### Output:
+# The output will be the list of students from each new Team formed.
+ 
+ 
+
+strength=len(students_list)
+groups=int(input('Enter the desired number of Teams in integers: '))
+for i in range (0,int(groups)):
+    Teams=[]
+    for p in range(i, strength, int(groups)):
+        Teams.append(students_list[p])
+    print('\n TEAM ',i+1,'MEMBERS',' is/are:\n \n',Teams)
+
